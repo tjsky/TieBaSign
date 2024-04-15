@@ -226,6 +226,7 @@ def main():
         logger.info("完成第" + str(n) + "个用户签到")
   #  send_email(favorites)
   #  不需要发送邮件
+  #  发什么邮件，不发
     logger.info("所有用户签到结束")
 
 
