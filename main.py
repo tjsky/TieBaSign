@@ -125,9 +125,18 @@ def get_favorite(bduss):
         if 'forum_list' not in res:
             continue
         if 'non-gconforum' in res['forum_list']:
-            returnData['forum_list']['non-gconforum'].append(res['forum_list']['non-gconforum'])
+            returnData['forum_list']['non-gconforum'].extend(res['forum_list']['non-gconforum'])
         if 'gconforum' in res['forum_list']:
-            returnData['forum_list']['gconforum'].append(res['forum_list']['gconforum'])
+            returnData['forum_list']['gconforum'].extend(res['forum_list']['gconforum'])
+
+    t = []
+    for i in returnData['forum_list']['non-gconforum']:
+        t.append(i)
+    for i in returnData['forum_list']['gconforum']:
+        t.append(i)
+    logger.info("获取关注的贴吧结束")
+    return t
+
 
     t = []
     for i in returnData['forum_list']['non-gconforum']:
