@@ -224,8 +224,8 @@ def main():
             time.sleep(random.randint(1,5))
             client_sign(i, tbs, j["id"], j["name"])
         logger.info("完成第" + str(n) + "个用户签到")
+  #  发送邮件
   #  send_email(favorites)
-  #  不需要发送邮件
     logger.info("所有用户签到结束")
 
 
