@@ -1,0 +1,16 @@
+name: 批量删除 Actions 历史记录
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  delete-runs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 批量删除
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 0 
+          keep_minimum_runs: 0 
