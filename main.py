@@ -165,8 +165,12 @@ def encodeData(data):
 
 
 def client_sign(bduss, tbs, fid, kw):
-    # 客户端签到
-    logger.info("开始签到贴吧：" + kw)
+    if kw:
+        masked_kw = kw[0] + "*" * (len(kw) - 1) if len(kw) > 1 else "*"
+    else:
+        masked_kw = "未知贴吧"
+        
+    logger.info("开始签到贴吧：" + masked_kw)
     data = copy.copy(SIGN_DATA)
     data.update({BDUSS: bduss, FID: fid, KW: kw, TBS: tbs, TIMESTAMP: str(int(time.time()))})
     data = encodeData(data)
@@ -217,7 +221,7 @@ def main():
         return
     b = ENV['BDUSS'].split('#')
     for n, i in enumerate(b):
-        logger.info("开始签到第" + str(n) + "个用户" + i)
+        logger.info("开始签到第" + str(n) + "个用户")
         tbs = get_tbs(i)
         favorites = get_favorite(i)
         for j in favorites:
